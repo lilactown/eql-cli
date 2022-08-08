@@ -39,6 +39,8 @@
                                    (edn/read-string)
                                    (p/pull (data)))
       :else (do (println (str "eql v" version))
+                (println "Usage: eql <options> <data>")
+                (println "If data is elided, expects it to be sent via stdin.")
                 (newline)
                 (println (cli/format-opts {:spec cli-spec}))))))
 
