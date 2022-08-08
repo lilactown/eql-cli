@@ -7,7 +7,16 @@ Powered by [pyramid](https://github.com/lilactown/pyramid) and [babashka](https:
 
 ## Install
 
-TODO
+### Homebrew
+
+```bash
+brew install lilactown/brew/eql
+```
+
+### Manual
+
+* Install [babashka](https://github.com/babashka/babashka)
+* Download the [eql](./eql) script and place it on your `PATH`.
 
 ## Usage
 
