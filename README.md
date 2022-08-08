@@ -31,3 +31,28 @@ Data is also accepted over STDIN, so you can do the following
 ```bash
 echo '{:foo 123 :bar 456}' | eql --query '[:foo]'
 ```
+
+
+## Usecases
+
+EQL over arbitrary data can be useful as a "`select-keys` on steroids" for deep
+nested data.
+
+
+```bash
+curl -s https://pokeapi.co/api/v2/pokemon/ditto | # fetch some data
+jet --from json --to edn --no-pretty --keywordize | # convert it from JSON to EDN
+eql --query "[:id :name :height :weight \
+             {:abilities [{:ability [:name]}]}]" | # select just the keys we want
+jet # pretty print
+```
+
+Outputs
+
+```clojure
+{:abilities [{:ability {:name "limber"}} {:ability {:name "imposter"}}],
+ :height 3,
+ :id 132,
+ :name "ditto",
+ :weight 40}
+```
