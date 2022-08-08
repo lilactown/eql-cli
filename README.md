@@ -1,7 +1,9 @@
 # eql-cli
 
 A command line script for executing [EQL](https://github.com/edn-query-language/eql)
-queries on [EDN](https://github.com/edn-format/edn) data. Powered by [pyramid](https://github.com/lilactown/pyramid).
+queries on [EDN](https://github.com/edn-format/edn) data.
+Powered by [pyramid](https://github.com/lilactown/pyramid) and [babashka](https://github.com/babashka/babashka).
+
 
 ## Install
 
