@@ -4,4 +4,18 @@
  :tasks {:requires ([clojure.string :as string])
          gen-script (let [prelude (slurp "prelude")
                           eql (slurp "src/town/lilac/eql.clj")]
-                      (spit "eql" (string/join "\n" [prelude eql])))}}
+                      (spit "eql" (string/join "\n" [prelude eql])))
+
+         bump-version {:task (let [version (-> (slurp "version.txt")
+                                               string/trim)
+                                   [major minor patch] (string/split version (re-pattern "\\."))
+                                   version (string/join "." [major minor (inc (Integer/parseInt patch))])]
+                               (spit "version.txt" version)
+                               version)}
+         sync-version (let [version (-> (slurp "version.txt") string/trim)
+                            oldsource (slurp "src/town/lilac/eql.clj")
+                            newsource (string/replace oldsource
+                                                   ;; Regex literals like #"\(def version \"[0-9\.]+\"\)" are not supported in bb.edn
+                                                   (re-pattern "\\(def version \\\"[0-9\\.]+\\\"\\)")
+                                                   (str "(def version \"" version "\")"))]
+                        (spit "src/town/lilac/eql.clj" newsource))}}
