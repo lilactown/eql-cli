@@ -17,6 +17,7 @@
    [clojure.edn :as edn]
    [pyramid.core :as p]))
 
+
 (def version "0.0.1")
 
 
@@ -46,4 +47,4 @@
 
 
 (when (= *file* (System/getProperty "babashka.file"))
-  (-main))
+  (apply -main *command-line-args*))
