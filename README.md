@@ -45,7 +45,7 @@ nested data.
 
 ```bash
 curl -s https://pokeapi.co/api/v2/pokemon/ditto | # fetch some data
-jet --from json --to edn --no-pretty --keywordize | # convert it from JSON to EDN
+jet --from json --to edn --keywordize | # convert it from JSON to EDN
 eql --query "[:id :name :height :weight \
              {:abilities [{:ability [:name]}]}]" | # select just the keys we want
 jet # pretty print
