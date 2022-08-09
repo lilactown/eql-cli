@@ -13,6 +13,10 @@ Powered by [pyramid](https://github.com/lilactown/pyramid) and [babashka](https:
 brew install lilactown/brew/eql
 ```
 
+### Scoop
+
+See https://github.com/littleli/scoop-clojure#tools
+
 ### Manual
 
 * Install [babashka](https://github.com/babashka/babashka)
